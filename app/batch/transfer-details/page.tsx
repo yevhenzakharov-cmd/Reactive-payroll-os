@@ -1,3 +1,4 @@
+import TopNav from "../../components/top-nav";
 "use client";
 
 import { useMemo, useState } from "react";
