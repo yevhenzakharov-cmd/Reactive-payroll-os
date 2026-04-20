@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import TopNav from "../components/top-nav";
 
@@ -315,26 +316,20 @@ export default function RequestsPage() {
           </div>
 
           <div className="overflow-hidden rounded-[1.5rem] border border-white/10">
-            <div className="grid grid-cols-[1.4fr_1fr_1fr_1.3fr_0.9fr] gap-4 border-b border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-white/50">
+            <div className="grid grid-cols-[1.25fr_0.9fr_0.9fr_1.2fr_0.8fr_0.95fr] gap-4 border-b border-white/10 bg-white/[0.03] px-6 py-3 text-sm text-white/50">
               <div>Name</div>
               <div>Type</div>
               <div>Amount</div>
               <div>Status</div>
               <div>Updated</div>
+              <div>Action</div>
             </div>
 
             {filteredRows.length > 0 ? (
               filteredRows.map((row) => (
-                <button
+                <div
                   key={`${row.name}-${row.amount}`}
-                  type="button"
-                  onClick={() => openModalForRow(row.name)}
-                  disabled={!isRowClickable(row.name)}
-                  className={`grid w-full grid-cols-[1.4fr_1fr_1fr_1.3fr_0.9fr] gap-4 border-b border-white/10 px-6 py-4 text-left text-[0.98rem] text-white/82 last:border-b-0 ${
-                    isRowClickable(row.name)
-                      ? "cursor-pointer transition hover:bg-white/[0.04]"
-                      : "cursor-default"
-                  }`}
+                  className="grid grid-cols-[1.25fr_0.9fr_0.9fr_1.2fr_0.8fr_0.95fr] gap-4 border-b border-white/10 px-6 py-4 text-[0.98rem] text-white/82 last:border-b-0"
                 >
                   <div className="font-medium text-white">{row.name}</div>
                   <div>{row.type}</div>
@@ -351,7 +346,31 @@ export default function RequestsPage() {
                     {row.status}
                   </div>
                   <div className="text-white/55">{row.updated}</div>
-                </button>
+
+                  <div>
+                    {row.name === "Julia M." ? (
+                      <Link
+                        href="/requests/details"
+                        className="inline-flex rounded-lg border border-cyan-400/20 bg-cyan-400/10 px-3 py-1.5 text-sm text-cyan-200 hover:bg-cyan-400/15"
+                      >
+                        View Details
+                      </Link>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => openModalForRow(row.name)}
+                        disabled={!isRowClickable(row.name)}
+                        className={`inline-flex rounded-lg border px-3 py-1.5 text-sm ${
+                          isRowClickable(row.name)
+                            ? "border-white/10 bg-white/[0.04] text-white/80 hover:bg-white/[0.07]"
+                            : "border-white/5 bg-white/[0.02] text-white/35"
+                        }`}
+                      >
+                        Open
+                      </button>
+                    )}
+                  </div>
+                </div>
               ))
             ) : (
               <div className="px-6 py-10 text-center text-white/55">
@@ -597,7 +616,7 @@ export default function RequestsPage() {
                       <ul className="mt-3 space-y-3 text-[1rem] text-white/82">
                         <li>• Process scheduled payroll runs and maintain payroll records.</li>
                         <li>• Consolidate timesheet and payout data before disbursement.</li>
-                        <li>• Calculate payment amounts and validate payroll exceptions.</li>
+                                                <li>• Calculate payment amounts and validate payroll exceptions.</li>
                         <li>• Coordinate with finance on payroll approvals and corrections.</li>
                       </ul>
                     </div>
