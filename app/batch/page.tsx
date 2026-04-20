@@ -1,12 +1,43 @@
+import Link from "next/link";
 import TopNav from "../components/top-nav";
 
 export default function BatchPage() {
   const activityRows = [
-    { user: "Julia M.", type: "Payroll", status: "Success", amount: "$2,500", tone: "emerald" },
-    { user: "Diana H.", type: "Payroll", status: "Success", amount: "$1,000", tone: "emerald" },
-    { user: "Jake T.", type: "Payroll", status: "Success", amount: "$3,500", tone: "emerald" },
-    { user: "Sam R.", type: "Affiliate", status: "Success", amount: "$400", tone: "emerald" },
-    { user: "Stripe Treasury", type: "Vendor", status: "Failed", amount: "$5,200", tone: "amber" },
+    {
+      user: "Julia M.",
+      type: "Payroll",
+      status: "Success",
+      amount: "$2,500",
+      tone: "emerald",
+    },
+    {
+      user: "Diana H.",
+      type: "Payroll",
+      status: "Success",
+      amount: "$1,000",
+      tone: "emerald",
+    },
+    {
+      user: "Jake T.",
+      type: "Payroll",
+      status: "Success",
+      amount: "$3,500",
+      tone: "emerald",
+    },
+    {
+      user: "Sam R.",
+      type: "Affiliate",
+      status: "Success",
+      amount: "$400",
+      tone: "emerald",
+    },
+    {
+      user: "Stripe Treasury",
+      type: "Vendor",
+      status: "Failed",
+      amount: "$5,200",
+      tone: "amber",
+    },
   ];
 
   const transferRows = [
@@ -191,9 +222,18 @@ export default function BatchPage() {
 
             <div className="rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_0_50px_rgba(33,53,120,0.16)]">
               <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
-                <h3 className="text-[1.8rem] font-semibold tracking-tight">
-                  Treasury Transfer
-                </h3>
+                <div className="flex items-center gap-3">
+                  <h3 className="text-[1.8rem] font-semibold tracking-tight">
+                    Treasury Transfer
+                  </h3>
+                  <Link
+                    href="/batch/transfer-details"
+                    className="inline-flex rounded-xl border border-cyan-300/40 bg-cyan-400/20 px-4 py-2 text-sm font-semibold text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.12)] transition hover:bg-cyan-400/25"
+                  >
+                    View Transfer Details
+                  </Link>
+                </div>
+
                 <div className="rounded-xl border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm text-white/75">
                   Live View
                 </div>
@@ -217,13 +257,6 @@ export default function BatchPage() {
                   </div>
                 ))}
               </div>
-
-              <a
-                href="/batch/transfer-details"
-                className="mt-5 inline-flex rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200"
-              >
-                View Transfer Details
-              </a>
             </div>
           </div>
 
@@ -266,4 +299,3 @@ export default function BatchPage() {
     </main>
   );
 }
-                      
