@@ -1,3 +1,4 @@
+import Link from "next/link";
 import TopNav from "../../components/top-nav";
 
 export default function TransferDetailsPage() {
@@ -141,12 +142,12 @@ export default function TransferDetailsPage() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <a
+                <Link
                   href="/batch"
                   className="rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-5 py-3 text-sm text-cyan-200"
                 >
                   Return to Batch Execution
-                </a>
+                </Link>
                 <button className="rounded-xl border border-white/10 bg-white/[0.04] px-5 py-3 text-sm text-white/80">
                   Retry Failed Transfer
                 </button>
@@ -161,7 +162,3 @@ export default function TransferDetailsPage() {
     </main>
   );
 }
-
-
-
-
